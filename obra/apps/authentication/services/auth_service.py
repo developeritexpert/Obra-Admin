@@ -1,39 +1,36 @@
-from django.core.exceptions import PermissionDenied
-from rest_framework_simplejwt.tokens import RefreshToken
-from apps.users.repositories.user_repository import UserRepository
+from django.contrib.auth.hashers import check_password
+from obra.apps.authentication.repositories.user_repository import UserRepository
+from obra.apps.authentication.services.jwt_service import JWTService
 
 
-class AdminAuthService:
+class AuthService:
 
     @staticmethod
-    def login(request, email: str, password: str, remember_me: bool = False):
-        user = UserRepository.get_admin_by_email(email)
+    def login(email, password):
+        user = UserRepository.get_by_email(email)
 
         if not user:
-            raise PermissionDenied("Invalid email or password")
+            return None, "Invalid credentials"
 
-        if not UserRepository.verify_password(user, password):
-            raise PermissionDenied("Invalid email or password")
+        if not check_password(password, user.password):
+            return None, "Invalid credentials"
 
-        # if not user.is_staff:
-        #     raise PermissionDenied("Admin access required")
-
-        # Generate JWT tokens
-        refresh = RefreshToken.for_user(user)
-
-        # Remember-me logic (session lifetime)
-        if remember_me:
-            request.session.set_expiry(60 * 60 * 24 * 30)  # 30 days
-        else:
-            request.session.set_expiry(0)  # browser session
+        token = JWTService.generate_token(user)
 
         return {
-            "access": str(refresh.access_token),
-            "refresh": str(refresh),
-            "user_id": user.id,
-            "email": user.email,
-        }
+            "user": user,
+            "token": token,
+        }, None
 
     @staticmethod
-    def logout(request):
-        request.session.flush()
+    def register(email, password, role):
+        if UserRepository.get_by_email(email):
+            return None, "Email already registered"
+
+        user = UserRepository.create_user(email, password, role)
+        return user, None
+
+
+    @staticmethod
+    def admin_exists():
+        return UserRepository.admin_exists()

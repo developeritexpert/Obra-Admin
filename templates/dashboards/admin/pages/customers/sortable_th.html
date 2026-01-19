@@ -1,0 +1,19 @@
+<th class="px-6 py-3 text-left">
+    {% with new_order="asc" %}
+        {% if sort == field and order == "asc" %}
+            {% with new_order="desc" %}{% endwith %}
+        {% endif %}
+    {% endwith %}
+
+    <a href="?sort={{ field }}&order={{ new_order }}&q={{ search_query }}"
+       class="flex items-center gap-1 hover:text-blue-600">
+        {{ label }}
+        {% if sort == field %}
+            {% if order == "asc" %}
+                ▲
+            {% else %}
+                ▼
+            {% endif %}
+        {% endif %}
+    </a>
+</th>

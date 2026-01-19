@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Admin | Obra{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="h-screen flex bg-gray-100 text-gray-800">
+
+    {% include "dashboards/admin/partials/sidebar.html" %}
+
+    <div class="flex-1 flex flex-col">
+        {% include "dashboards/admin/partials/header.html" %}
+
+        <main class="flex-1 p-6 overflow-y-auto">
+            {% block content %}{% endblock %}
+        </main>
+
+        {% include "dashboards/admin/partials/footer.html" %}
+    </div>
+
+</body>
+</html>

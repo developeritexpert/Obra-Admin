@@ -1,13 +1,14 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
+from obra.apps.authentication.managers.user_manager import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
 
     class Role(models.TextChoices):
         ADMIN = "admin", "Admin"
-        USER = "user", "User"
+        USER = "user", "User"   
         TRADER = "trader", "Trader"
 
     # Core Identity Fields
@@ -15,8 +16,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=150, unique=True, null=True, blank=True)
 
     first_name = models.CharField(max_length=150, blank=True)
-    last_name = models.CharField(max_length=150, blank=True)
-
+    last_name = models.CharField(max_length=150, blank=True)    
+    
     # Authentication
     password = models.CharField(max_length=128)
 
@@ -29,7 +30,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # Account Status
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
 
     # Email Verification
     email_verified = models.BooleanField(default=False)
@@ -57,6 +57,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = UserManager()
 
     # Authentication Config
     USERNAME_FIELD = "email"

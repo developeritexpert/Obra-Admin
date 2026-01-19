@@ -1,14 +1,21 @@
-# apps/auth/urls.py
 from django.urls import path
-from apps.authentication.controllers.admin.admin_auth_controller import admin_login , admin_logout
-# from obra.apps.authentication.controllers.api.login_controller import api_login
-# from apps.authentication.controllers.api.logout_controller import api_logout
+from obra.apps.authentication.controllers.common.auth_controller import (
+    login_view,
+    logout_view,
+    register_user_view,
+    register_trader_view,
+    register_admin_view,
+)
 
 app_name = "auth"
 
 urlpatterns = [
-    # Admin (template-based)
-    path("admin/login", admin_login, name="admin-login"),
-    path("admin/logout", admin_logout, name="admin-logout"),
+    path("login/", login_view, name="login"),
+    path("logout/", logout_view, name="logout"),
 
+    # Registration
+    path("register/user/", register_user_view, name="register_user"),
+    path("register/trader/", register_trader_view, name="register_trader"),
+
+    path("register/admin/", register_admin_view, name="register_admin"),
 ]

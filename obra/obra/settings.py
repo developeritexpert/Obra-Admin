@@ -19,7 +19,7 @@ import os
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -47,10 +47,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
-    'apps.users',
-    'apps.authentication',
-    'apps.dashboards',
-    'apps.products',
+    'obra.apps.authentication.apps.AuthenticationConfig',
+    'obra.apps.users.apps.UsersConfig',
+    'obra.apps.products.apps.ProductsConfig',
+    'obra.apps.dashboards.apps.DashboardsConfig',
+    'obra.apps.core.apps.CoreConfig',
 ]
 
 REST_FRAMEWORK = {
@@ -70,13 +71,16 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+
+    "obra.apps.authentication.middleware.role_auth_middleware.RoleAuthMiddleware",
+
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'obra.urls'
+ROOT_URLCONF = 'obra.obra.urls'
 
 TEMPLATES = [
     {
@@ -93,7 +97,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'obra.wsgi.application'
+WSGI_APPLICATION = 'obra.obra.wsgi.application'
 
 
 # Database
