@@ -40,7 +40,7 @@ class RoleAuthMiddleware(MiddlewareMixin):
         # Case 2: Protected routes → token required
         # --------------------------------------------------
         if not token:
-            return redirect("/auth/login/")
+            return redirect("/auth/login/") 
 
         payload = self._decode_token(token)
         if not payload:

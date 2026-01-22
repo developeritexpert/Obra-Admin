@@ -1,60 +1,106 @@
+{% load static %}
+
 <aside class="w-64 bg-[#111827] text-gray-200 flex flex-col">
+  <!-- Logo -->
   <div class="h-16 flex items-center px-6 border-b border-gray-700">
     <span class="text-lg font-semibold tracking-wide">OBRA</span>
   </div>
 
-  <nav class="flex-1 px-4 py-6 space-y-2 text-sm">
-
+  <!-- Navigation -->
+  <nav class="flex-1 px-3 py-4 text-sm space-y-1">
+    <!-- Dashboard -->
     <a
       href="{% url 'admin:dashboard' %}"
-      class="flex items-center gap-3 px-4 py-2 rounded {% if request.resolver_match.url_name == 'dashboard' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
+      class="flex items-center px-3 py-2 rounded-md {% if request.resolver_match.url_name == 'dashboard' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
     >
-      Dashboard
-    </a>
-
-    <a class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-800">
-      Pages
-    </a>
-
-    <a class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-800">
-      Products
-    </a>
-
-    <a class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-800">
-      Inventory
-    </a>
-
-    <a class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-800">
-      Orders
-    </a>
-
-    <a class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-800">
-      Quotations
+      Home
     </a>
     <a
+      href="{% url 'admin:dashboard' %}"
+      class="flex items-center px-3 py-2 rounded-md {% if request.resolver_match.url_name == 'dashboard' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
+    >
+      Page Builder
+    </a>
+    <!-- Orders -->
+    <a
+      class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800"
+    >
+      <span>Orders</span>
+      <span class="text-xs bg-gray-700 px-2 py-0.5 rounded-full">2</span>
+    </a>
+
+    <!-- Products (Expandable) -->
+    <div>
+      <button
+        type="button"
+        id="products-toggle"
+        class="w-full flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800"
+      >
+        <span>Products</span>
+        <span
+          id="products-arrow"
+          class="text-xs transition-transform duration-300 ease-in-out"
+          >►</span
+        >
+      </button>
+
+      <!-- Submenu -->
+      <div id="products-menu" class="ml-4 mt-1 space-y-1 text-gray-400 hidden">
+        <a href="{% url 'admin:products' %}"
+          class="block px-3 py-1.5 rounded-md hover:text-white hover:bg-gray-800
+          {% if request.resolver_match.url_name == 'products' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
+        >
+          All Products
+        </a>
+        <a
+          class="block px-3 py-1.5 rounded-md hover:text-white hover:bg-gray-800"
+        >
+          Collections
+        </a>
+
+        <a
+          class="block px-3 py-1.5 rounded-md hover:text-white hover:bg-gray-800"
+        >
+          Inventory
+        </a>
+
+        <a
+          class="block px-3 py-1.5 rounded-md hover:text-white hover:bg-gray-800"
+        >
+          Purchase Orders
+        </a>
+      </div>
+    </div>
+
+    <!-- Customers -->
+    <a
       href="{% url 'admin:customers' %}"
-      class="flex items-center gap-3 px-4 py-2 rounded {% if request.resolver_match.url_name == 'customers' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
+      class="flex items-center px-3 py-2 rounded-md {% if request.resolver_match.url_name == 'customers' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
     >
       Customers
     </a>
 
+    <!-- Trade Partners -->
     <a
-      href="{% url 'admin:trade-partners' %}"
-      class="flex items-center gap-3 px-4 py-2 rounded {% if request.resolver_match.url_name == 'trade-partners' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
+      href="{% url 'admin:trade_partners' %}"
+      class="flex items-center px-3 py-2 rounded-md {% if request.resolver_match.url_name == 'trade_partners' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
     >
       Trade Partners
     </a>
-    <a class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-800">
+
+    <!-- Settings -->
+    <a class="flex items-center px-3 py-2 rounded-md hover:bg-gray-800">
       Settings
     </a>
   </nav>
 
-  <div class="px-6 py-4 border-t border-gray-700">
+  <!-- Logout -->
+  <div class="px-4 py-4 border-t border-gray-700">
     <form method="post" action="{% url 'auth:logout' %}">
       {% csrf_token %}
       <button
-        class="block w-full text-center py-2 rounded bg-gray-800 hover:bg-gray-700"
         type="submit"
+        class="w-full py-2 rounded-md bg-gray-800 hover:bg-gray-700 text-sm"
       >
         Logout
       </button>
