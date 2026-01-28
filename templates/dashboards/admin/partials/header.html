@@ -1,15 +1,27 @@
-<header class="h-16 bg-white flex items-center justify-between px-6 shadow-sm">
-    <div class="flex items-center gap-4">
-        <button class="text-gray-500 text-xl">☰</button>
-        <h1 class="text-lg font-semibold">Welcome to the Dashboard!</h1>
+{%load static%}
+<div
+  class="py-6 2xl:py-10 px-7 flex gap-[30px] items-center justify-between shadow-[0px_16px_44px_0px_#00000012] bg-white"
+>
+  <div class="flex items-center gap-[20px]">
+    <div id="hamburger" class="cursor-pointer">
+      <img src="{% static 'img/humberg.png' %}" alt="humberg-logo" />
     </div>
-
-    <div class="flex items-center gap-4">
-        <button class="relative">
-            🔔
-            <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-        </button>
-
-        <div class="w-9 h-9 rounded-full bg-gray-300"></div>
+    <h1
+      class="text-[#1B2022] font-[600] text-[13px] xl:text-[20px] 2xl:text-[26px] [font-family:'Plus_Jakarta_Sans',sans-serif]"
+    >
+      ¡Bienvenido al panel de control!
+    </h1>
+  </div>
+  <div class="flex items-center md:gap-[30px] gap-[10px]">
+    <div class="notifiaction relative">
+      <img src="{% static 'img/noti-icon.png' %}" />
+      <span
+        class="total-noti flex items-center justify-center rounded-full absolute top-[-9px] right-[-6px] h-[18px] w-[18px] text-[10px] bg-gradient-to-b from-[#FFCE78] to-[#F9A333]"
+        >6</span
+      >
     </div>
-</header>
+    <div class="profile-icon cursor-pointer">
+      <img src="{% static 'img/profile-icon.png' %}" />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="bg-white border rounded-lg p-4">
+
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="font-medium">Variants</h3>
+  </div>
+
+  {{ variant_formset.management_form }}
+
+  <div class="space-y-4">
+    {% for vform in variant_formset %}
+      <div class="border rounded-lg p-4 grid grid-cols-2 gap-4">
+
+        <div>
+          <label class="text-sm">Variant Name</label>
+          {{ vform.variant_name }}
+        </div>
+
+        <div>
+          <label class="text-sm">SKU</label>
+          {{ vform.sku }}
+        </div>
+
+        <div>
+          <label class="text-sm">Base Price</label>
+          {{ vform.base_price }}
+        </div>
+
+        <div>
+          <label class="text-sm">Colors</label>
+          {{ vform.colors }}
+        </div>
+
+        <div>
+          <label class="text-sm">In Stock</label>
+          {{ vform.in_stock }}
+        </div>
+
+        {% if vform.DELETE %}
+          <div class="col-span-2">
+            {{ vform.DELETE }} Remove
+          </div>
+        {% endif %}
+
+      </div>
+    {% endfor %}
+  </div>
+
+</div>

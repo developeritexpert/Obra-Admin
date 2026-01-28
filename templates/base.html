@@ -1,23 +1,33 @@
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>{% block title %}Obra{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+    <!-- Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Satoshi Font -->
+    <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet" />
+    <!-- chart library -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    {% block extra_head %}{% endblock %}
-</head>
-<body class="bg-gray-100 min-h-screen">
-
-    {% block body %}
-    <main class="min-h-screen">
-        {% block content %}{% endblock %}
-    </main>
+    {% block extra_head %}
+    
     {% endblock %}
-
-    {% block extra_scripts %}{% endblock %}
-</body>
+  </head>
+  <body>
+      {% block content %}
+      {% endblock %}
+    {% block extra_scripts %}
+    
+    {% endblock %}
+  </body>
 </html>

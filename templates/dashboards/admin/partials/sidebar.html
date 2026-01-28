@@ -1,109 +1,186 @@
 {% load static %}
 
-<aside class="w-64 bg-[#111827] text-gray-200 flex flex-col">
+<aside
+  id="sidebar"
+  class="fixed lg:relative top-0 left-0 h-screen -translate-x-full lg:translate-x-0 transition-all duration-500 ease-in-out w-[280px] 2xl:w-[374px] bg-[#1B2022] text-white flex flex-col py-5 leading-[120%] md:text-[18px] text-[16px] 2xl:text-[22px] [font-family:'Plus_Jakarta_Sans',sans-serif] z-[9999999]"
+>
   <!-- Logo -->
-  <div class="h-16 flex items-center px-6 border-b border-gray-700">
-    <span class="text-lg font-semibold tracking-wide">OBRA</span>
+  <div class="px-4 2x:px-6">
+    <div
+      class="pb-5 border-b border-[#FFFFFF4D] flex xl:justify-center md:justify-start md:gap-[20px] gap-[10px]"
+    >
+      <div id="hamburger2" class="cursor-pointer">
+        <img
+          class="invert"
+          src="{% static 'img/humberg.png' %}"
+          alt="humberg-logo"
+        />
+      </div>
+      <span class="sidebar-logo">
+        <img
+          src="{% static 'img/logo.png' %}"
+          alt="logo"
+          class="lg: w-[137px] md:w-[108px] w-[80px]"
+        />
+      </span>
+
+      <span class="sidebar-logo-collapsed hidden">
+        <svg
+          width="36"
+          height="40"
+          viewBox="0 0 36 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M33.553 16.7005C32.9632 16.7005 32.3733 16.4055 31.9309 15.9631C31.9309 15.9631 31.9309 15.9631 31.7834 15.8157L19.3963 5.19816C18.5115 4.31336 17.0369 4.31336 16.1521 5.19816L3.765 15.8157C2.88021 16.553 1.40555 16.553 0.520759 15.5207C-0.216569 14.6359 -0.216568 13.1613 0.815691 12.2765L13.2028 1.65899C15.8572 -0.552996 19.6913 -0.552996 22.3456 1.65899L34.7327 12.2765C34.8802 12.2765 35.0277 12.5714 35.1751 12.7189C36.0599 13.6037 36.0599 15.0783 35.1751 15.9631C34.7327 16.4055 34.1429 16.553 33.553 16.553"
+            fill="white"
+          />
+          <path
+            d="M17.9217 19.5023C13.4977 19.5023 9.95854 23.0415 9.95854 27.4654C9.95854 31.8894 13.4977 35.4286 17.9217 35.4286C22.3456 35.4286 25.8848 31.8894 25.8848 27.4654C25.8848 23.0415 22.3456 19.5023 17.9217 19.5023ZM17.9217 39.8525C10.9908 39.8525 5.38712 34.2488 5.38712 27.318C5.38712 20.3871 10.9908 14.7834 17.9217 14.7834C24.8526 14.7834 30.4562 20.3871 30.4562 27.318C30.4562 34.2488 24.8526 39.8525 17.9217 39.8525Z"
+            fill="white"
+          />
+        </svg>
+      </span>
+    </div>
   </div>
 
-  <!-- Navigation -->
-  <nav class="flex-1 px-3 py-4 text-sm space-y-1">
-    <!-- Dashboard -->
-    <a
-      href="{% url 'admin:dashboard' %}"
-      class="flex items-center px-3 py-2 rounded-md {% if request.resolver_match.url_name == 'dashboard' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
-    >
-      Home
-    </a>
-    <a
-      href="{% url 'admin:dashboard' %}"
-      class="flex items-center px-3 py-2 rounded-md {% if request.resolver_match.url_name == 'dashboard' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
-    >
-      Page Builder
-    </a>
-    <!-- Orders -->
-    <a
-      class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800"
-    >
-      <span>Orders</span>
-      <span class="text-xs bg-gray-700 px-2 py-0.5 rounded-full">2</span>
-    </a>
-
-    <!-- Products (Expandable) -->
-    <div>
-      <button
-        type="button"
-        id="products-toggle"
-        class="w-full flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800"
+  <!-- Menu -->
+  <div
+    class="flex flex-col justify-between h-screen overflow-y-auto hide-scrollbar"
+  >
+    <nav class="flex flex-col gap-3 pt-7 2xl:pt-11 font-normal pl-6 2x:pl-10">
+      <a
+        href="{% url 'admin:dashboard' %}"
+        class="flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032] px-3 py-4 xl:px-6 md:px-4 xl:py-5 rounded-l-[55px]"
       >
-        <span>Products</span>
-        <span
-          id="products-arrow"
-          class="text-xs transition-transform duration-300 ease-in-out"
-          >►</span
-        >
-      </button>
+        <div>
+          <img src="{% static 'img/home.png' %}" alt="home-logo" />
+        </div>
+        <span class="sidebar-text">Panel de control</span>
+      </a>
 
-      <!-- Submenu -->
-      <div id="products-menu" class="ml-4 mt-1 space-y-1 text-gray-400 hidden">
-        <a href="{% url 'admin:products' %}"
-          class="block px-3 py-1.5 rounded-md hover:text-white hover:bg-gray-800
-          {% if request.resolver_match.url_name == 'products' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
-        >
-          All Products
-        </a>
+      <div class="group">
+        <!-- TOGGLE -->
         <a
-          class="block px-3 py-1.5 rounded-md hover:text-white hover:bg-gray-800"
+          href="#websitePageTab"
+          class="toggle w-full flex items-center justify-between gap-3 px-3 py-4 xl:px-6 md:px-4 xl:py-5 rounded-l-[55px] transition-all duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032]"
         >
-          Collections
-        </a>
+          <!-- Left -->
+          <div class="flex gap-3 items-center">
+            <img src="{% static 'img/page.png'%}" alt="page-logo" />
+            <span
+              class="sidebar-text text-[16px] xl:text-[18px] 2xl:text-[22px]"
+            >
+              Páginas
+            </span>
+          </div>
 
-        <a
-          class="block px-3 py-1.5 rounded-md hover:text-white hover:bg-gray-800"
-        >
-          Inventory
+          <!-- Arrow -->
+          <img
+            src="{% static 'img/dropdown.png'%}"
+            class="transition-transform duration-300 origin-center group-[.open]:rotate-180"
+          />
         </a>
+        <!-- DROPDOWN -->
+        <div
+          class="dropdown overflow-hidden pl-[48px] max-h-0 transition-[max-height] duration-300 ease-in-out group-[.open]:max-h-[200px]"
+        >
+          <div class="flex flex-col gap-3 py-3 text-[14px] text-[#C9CBCC]">
+            <span
+              class="website-tab-link flex items-center gap-3 cursor-pointer hover:text-white"
+              data-target="#websiteMainPage"
+            >
+              <span class="w-2 h-2 border border-[#6F7375] rounded-full"></span>
+              <span class="sidebar-text">Páginas del sitio web</span>
+            </span>
 
-        <a
-          class="block px-3 py-1.5 rounded-md hover:text-white hover:bg-gray-800"
-        >
-          Purchase Orders
-        </a>
+            <span
+              class="website-tab-link flex items-center gap-3 cursor-pointer hover:text-white"
+              data-target="#websiteEditPage"
+            >
+              <span class="w-2 h-2 border border-[#6F7375] rounded-full"></span>
+              <span class="sidebar-text">Páginas de personalización</span>
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <!-- Customers -->
-    <a
-      href="{% url 'admin:customers' %}"
-      class="flex items-center px-3 py-2 rounded-md {% if request.resolver_match.url_name == 'customers' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
-    >
-      Customers
-    </a>
-
-    <!-- Trade Partners -->
-    <a
-      href="{% url 'admin:trade_partners' %}"
-      class="flex items-center px-3 py-2 rounded-md {% if request.resolver_match.url_name == 'trade_partners' %} bg-gray-800 text-white {% else %} hover:bg-gray-800 {% endif %}"
-    >
-      Trade Partners
-    </a>
-
-    <!-- Settings -->
-    <a class="flex items-center px-3 py-2 rounded-md hover:bg-gray-800">
-      Settings
-    </a>
-  </nav>
-
-  <!-- Logout -->
-  <div class="px-4 py-4 border-t border-gray-700">
-    <form method="post" action="{% url 'auth:logout' %}">
-      {% csrf_token %}
-      <button
-        type="submit"
-        class="w-full py-2 rounded-md bg-gray-800 hover:bg-gray-700 text-sm"
+      <a
+        href="#productosTab"
+        class="flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032] px-3 py-4 xl:px-6 md:px-4 xl:py-5 rounded-l-[55px]"
       >
-        Logout
-      </button>
-    </form>
+        <div>
+          <img src="{% static 'img/product.png' %}" alt="prodict-logo" />
+        </div>
+
+        <span class="sidebar-text">Productos</span>
+      </a>
+      <a
+        href="#paymentHistoryTab"
+        class="flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032] px-3 py-4 xl:px-6 md:px-4 xl:py-5 rounded-l-[55px]"
+      >
+        <div>
+          <img src="{% static 'img/history.png' %}" alt="history-logo" />
+        </div>
+
+        <span class="sidebar-text"> Historial de pagos</span>
+      </a>
+      <a
+        href="#customerProfileTab"
+        class="flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032] px-3 py-4 xl:px-6 md:px-4 xl:py-5 rounded-l-[55px]"
+      >
+        <div>
+          <img src="{% static 'img/client.png' %}" alt="clinet-logo" />
+        </div>
+
+        <span class="sidebar-text">Perfil del cliente</span>
+      </a>
+      <a
+        href="#tradersTab"
+        class="flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032] px-3 py-4 xl:px-6 md:px-4 xl:py-5 rounded-l-[55px]"
+      >
+        <div>
+          <img src="{% static 'img/man.png' %}" alt="man-logo" />
+        </div>
+
+        <span class="sidebar-text"> Comerciantes</span>
+      </a>
+      <a
+        href="{% url 'admin:regions' %}"
+        class="flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032] px-3 py-4 xl:px-6 md:px-4 xl:py-5 rounded-l-[55px]"
+      >
+        <div>
+          <img src="{% static 'img/regionn.png' %}" alt="clinet-logo" class="w-6" />
+        </div>
+
+        <span class="sidebar-text">donde comprar</span>
+      </a>
+      <a
+        href="#settingsTab"
+        class="flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032] px-3 py-4 xl:px-6 md:px-4 xl:py-5 rounded-l-[55px]"
+      >
+        <div>
+          <img src="{% static 'img/setting.png' %}" alt="setting-logo" />
+        </div>
+
+        <span class="sidebar-text"> Configuración</span>
+      </a>
+    </nav>
+    <div class="flex pl-6 2x:pl-10 pt-7 2xl:pt-11">
+      <a
+        href="#"
+        id="logoutBtn"
+        class="logout-btn border-[3px] border-[#5F6364] 2xl:py-5 2xl:px-9 px-4 py-3 xl:px-6 xl:py-4 rounded-full flex items-center gap-3 transition-colors duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032] hover:text-white md:text-[16px] text-[12px]"
+      >
+        <span class="btn-logo"
+          ><img
+            class="w-[12px] md:w-[100%]"
+            src="{% static 'img/logout.png' %}"
+            alt="page-logo"
+        /></span>
+
+        <span class="sidebar-text"> Cerrar sesión</span>
+      </a>
+    </div>
   </div>
 </aside>

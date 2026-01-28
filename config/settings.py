@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'apps.users.apps.UsersConfig',
     'apps.dashboards.apps.DashboardsConfig',
     'apps.catalog.apps.CatalogConfig',
+    'apps.dashboards.admin.apps.AdminDashboardConfig',
 ]
 
 REST_FRAMEWORK = {

@@ -1,0 +1,140 @@
+<div class="flex flex-col gap-[30px] md:flex-row">
+  <div class="regions-left flex-1">
+    <div
+      class="bg-white border border-[#1B20221A] md:px-[30px] md:py-[25px] mb-[20px] py-[20px] px-[15px]"
+    >
+      <h6
+        class="text-[16px] md:text-[18px] xl:text-[20px] text-[#1B2022] mb-[10px]"
+      >
+        Imagen de la Región
+      </h6>
+      <div class="w-full">
+        <label
+          id="dropArea"
+          class="px-[15px] md:p-[0] text-center flex flex-col items-center justify-center h-[120px] border border-dashed border-[#1B20220F] bg-[#1B202205] rounded-lg cursor-pointer hover:bg-[#1B202210] transition"
+        >
+          <input
+            type="file"
+            id="regionImageInput"
+            class="hidden"
+            accept="image/*"
+            multiple
+          />
+          <p class="text-sm text-gray-600">
+            Arrastra y suelta tus imágenes o
+            <span class="text-[#B7B9BA]-600 font-medium underline"
+              >Navegar</span
+            >
+          </p>
+        </label>
+        <!-- Preview container -->
+        <div id="regionPreview" class="mt-4 grid grid-cols-3 gap-3"></div>
+      </div>
+    </div>
+
+    <!-- Name input -->
+    <div
+      class="border border-[#1B20221A] md:py-[25px] md:px-[30px] py-[20px] px-[15px] bg-white mb-[20px]"
+    >
+      <h6
+        class="text-[16px] md:text-[18px] xl:text-[20px] text-[#1B2022] mb-[10px]"
+      >
+        Nombre de la Región
+      </h6>
+      <input
+        type="text"
+        placeholder="Nombre de la región"
+        class="w-full border border-[#1B20221A] px-[15px] py-[10px] rounded-md text-[#1B2022] focus:outline-none focus:ring-2 focus:ring-[#2B3032]"
+      />
+    </div>
+  </div>
+
+  <!-- Right part (Address, Mobile, Email, Location) -->
+  <div class="regions-right flex-1">
+    <!-- Address input -->
+    <div
+      class="border border-[#1B20221A] md:py-[25px] md:px-[30px] py-[20px] px-[15px] bg-white mb-[20px]"
+    >
+      <h6
+        class="text-[16px] md:text-[18px] xl:text-[20px] text-[#1B2022] mb-[10px]"
+      >
+        Dirección
+      </h6>
+      <input
+        type="text"
+        placeholder="Código Postal"
+        class="w-full border border-[#1B20221A] px-[15px] py-[10px] mb-[10px] rounded-md text-[#1B2022] focus:outline-none focus:ring-2 focus:ring-[#2B3032]"
+      />
+      <input
+        type="text"
+        placeholder="Ciudad"
+        class="w-full border border-[#1B20221A] px-[15px] py-[10px] mb-[10px] rounded-md text-[#1B2022] focus:outline-none focus:ring-2 focus:ring-[#2B3032]"
+      />
+      <input
+        type="text"
+        placeholder="Estado"
+        class="w-full border border-[#1B20221A] px-[15px] py-[10px] rounded-md text-[#1B2022] focus:outline-none focus:ring-2 focus:ring-[#2B3032]"
+      />
+    </div>
+
+    <!-- Mobile input -->
+    <div
+      class="border border-[#1B20221A] md:py-[25px] md:px-[30px] py-[20px] px-[15px] bg-white mb-[20px]"
+    >
+      <h6
+        class="text-[16px] md:text-[18px] xl:text-[20px] text-[#1B2022] mb-[10px]"
+      >
+        Móvil
+      </h6>
+      <input
+        type="text"
+        placeholder="Número de móvil"
+        class="w-full border border-[#1B20221A] px-[15px] py-[10px] rounded-md text-[#1B2022] focus:outline-none focus:ring-2 focus:ring-[#2B3032]"
+      />
+    </div>
+
+    <!-- Email input -->
+    <div
+      class="border border-[#1B20221A] md:py-[25px] md:px-[30px] py-[20px] px-[15px] bg-white mb-[20px]"
+    >
+      <h6
+        class="text-[16px] md:text-[18px] xl:text-[20px] text-[#1B2022] mb-[10px]"
+      >
+        Correo Electrónico
+      </h6>
+      <input
+        type="email"
+        placeholder="Correo electrónico"
+        class="w-full border border-[#1B20221A] px-[15px] py-[10px] rounded-md text-[#1B2022] focus:outline-none focus:ring-2 focus:ring-[#2B3032]"
+      />
+    </div>
+
+    <!-- Location input -->
+    <div
+      class="border border-[#1B20221A] md:py-[25px] md:px-[30px] py-[20px] px-[15px] bg-white mb-[20px]"
+    >
+      <h6
+        class="text-[16px] md:text-[18px] xl:text-[20px] text-[#1B2022] mb-[10px]"
+      >
+        Ubicación
+      </h6>
+      <input
+        type="text"
+        placeholder="Ubicación"
+        class="w-full border border-[#1B20221A] px-[15px] py-[10px] rounded-md text-[#1B2022] focus:outline-none focus:ring-2 focus:ring-[#2B3032]"
+      />
+    </div>
+    <div class="flex flex-col md:flex-row gap-[20px] mt-[40px]">
+      <a
+        class="uppercase text-white text-[13px] py-[13px] px-[26px] rounded-[100px] bg-[#2B3032] hover:bg-[#2b303254] text-center"
+        href=""
+        >Guardar cambios</a
+      >
+      <a
+        class="uppercase text-[#2B3032] hover:bg-[#2B3032] hover:text-white text-[13px] py-[13px] px-[26px] rounded-[100px] border border-[#2B3032] text-center"
+        href=""
+        >Cancelar</a
+      >
+    </div>
+  </div>
+</div>

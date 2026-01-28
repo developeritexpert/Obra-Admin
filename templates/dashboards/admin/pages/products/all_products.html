@@ -4,6 +4,50 @@
 
 {% block content %}
 
-<h1>Products Page</h1>
+<div class="px-8 py-6">
+
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-semibold">
+      {% if form.instance.pk %}Edit Product{% else %}Add Product{% endif %}
+    </h1>
+  </div>
+
+  <form method="post" class="grid grid-cols-12 gap-6">
+    {% csrf_token %}
+
+    <!-- LEFT COLUMN -->
+    <div class="col-span-7 space-y-6">
+      {% include "dashboard/products/partials/product_images.html" %}
+      {% include "dashboard/products/partials/product_basic.html" %}
+      {% include "dashboard/products/partials/product_variants.html" %}
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-span-5 space-y-6">
+      {% include "dashboard/products/partials/product_pricing.html" %}
+      {% include "dashboard/products/partials/product_attributes.html" %}
+
+      <!-- Actions -->
+      <div class="flex justify-end gap-3 pt-4">
+        <a
+          href="{% url 'dashboard:product_list' %}"
+          class="px-6 py-2 rounded-full border text-sm"
+        >
+          Discard
+        </a>
+
+        <button
+          type="submit"
+          class="px-6 py-2 rounded-full bg-gray-900 text-white text-sm"
+        >
+          Save Product
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
 
 {% endblock %}

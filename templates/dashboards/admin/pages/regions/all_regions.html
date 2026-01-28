@@ -1,0 +1,304 @@
+{% extends "dashboards/admin/base_admin.html" %} {% block title %}Admin
+Dashboard | Obra{% endblock %} {% block content %} {% load static %}
+<section id="dondeComprarTab" class="tab-section">
+  <div class="pt-[34px] xl:pl-[28px] xl:pr-[60px] md:pr-[28px] px-[15px]">
+    <div class="ForRegionsPanel">
+      <div class="flex items-center justify-between mb-8">
+        <h4 class="text-[18px] md:text-[24px] text-[#1B2022] mb-[20px]">
+          Panel de Regiones
+        </h4>
+        <button id="ForRegionsPanelBtn">
+          <img src="{% static 'img/humberg.png' %}" alt="humberg-logo" />
+        </button>
+      </div>
+
+      <div id="Panel-table" class="w-full overflow-x-auto">
+        <table
+          class="w-full text-left bg-white border border-[#1B202214] border-collapse"
+        >
+          <thead class="bg-gray-50">
+            <tr
+              class="xl:text-[18px] md:text-[16px] 2xl:text-[22px] font-medium border-b border-[#1B202214]"
+            >
+              <th
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Imagen
+              </th>
+              <th
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Nombre de la Región
+              </th>
+              <th
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Dirección
+              </th>
+              <th
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Móvil
+              </th>
+              <th
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Correo Electrónico
+              </th>
+              <th
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Ubicación
+              </th>
+              <th
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Acciones
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr
+              class="border-b border-[#1B202214] xl:text-[18px] md:text-[16px] 2xl:text-[18px]"
+            >
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 flex items-center gap-3 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                <div class="min-w-[60px]">
+                  <img
+                    src="{% static 'img/trader/1.png' %}"
+                    alt="region-img"
+                    class="w-[50px] h-[50px] object-cover rounded"
+                  />
+                </div>
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Región Norte
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Código Postal 12345, Ciudad A, Estado B
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                +12107562355
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                socratesitumay@gmail.com
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Región Norte, Ciudad
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] text-[#1B20221A] whitespace-nowrap"
+              >
+                <div class="flex justify-center">
+                  <button>
+                    <svg
+                      width="24"
+                      height="6"
+                      viewBox="0 0 24 6"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.1">
+                        <circle
+                          cx="2.61816"
+                          cy="2.61816"
+                          r="2.61816"
+                          fill="#1B2022"
+                        />
+                        <circle
+                          cx="11.8545"
+                          cy="2.61816"
+                          r="2.61816"
+                          fill="#1B2022"
+                        />
+                        <circle
+                          cx="21.0908"
+                          cy="2.61816"
+                          r="2.61816"
+                          fill="#1B2022"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="border-b border-[#1B202214] xl:text-[18px] md:text-[16px] 2xl:text-[18px]"
+            >
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 flex items-center gap-3 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                <div class="min-w-[60px]">
+                  <img
+                    src="{% static 'img/trader/1.png' %}"
+                    alt="region-img"
+                    class="w-[50px] h-[50px] object-cover rounded"
+                  />
+                </div>
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Región Norte
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Código Postal 12345, Ciudad A, Estado B
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                +12107562355
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                socratesitumay@gmail.com
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Región Norte, Ciudad
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] text-[#1B20221A] whitespace-nowrap"
+              >
+                <div class="flex justify-center">
+                  <button>
+                    <svg
+                      width="24"
+                      height="6"
+                      viewBox="0 0 24 6"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.1">
+                        <circle
+                          cx="2.61816"
+                          cy="2.61816"
+                          r="2.61816"
+                          fill="#1B2022"
+                        />
+                        <circle
+                          cx="11.8545"
+                          cy="2.61816"
+                          r="2.61816"
+                          fill="#1B2022"
+                        />
+                        <circle
+                          cx="21.0908"
+                          cy="2.61816"
+                          r="2.61816"
+                          fill="#1B2022"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="border-b border-[#1B202214] xl:text-[18px] md:text-[16px] 2xl:text-[18px]"
+            >
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 flex items-center gap-3 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                <div class="min-w-[60px]">
+                  <img
+                    src="{% static 'img/trader/1.png' %}"
+                    alt="region-img"
+                    class="w-[50px] h-[50px] object-cover rounded"
+                  />
+                </div>
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Región Norte
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Código Postal 12345, Ciudad A, Estado B
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                +12107562355
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                socratesitumay@gmail.com
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] whitespace-nowrap"
+              >
+                Región Norte, Ciudad
+              </td>
+              <td
+                class="px-5 2xl:px-7 py-4 2xl:py-5 border-r border-[#1B202214] text-[#1B20221A] whitespace-nowrap"
+              >
+                <div class="flex justify-center">
+                  <button>
+                    <svg
+                      width="24"
+                      height="6"
+                      viewBox="0 0 24 6"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.1">
+                        <circle
+                          cx="2.61816"
+                          cy="2.61816"
+                          r="2.61816"
+                          fill="#1B2022"
+                        />
+                        <circle
+                          cx="11.8545"
+                          cy="2.61816"
+                          r="2.61816"
+                          fill="#1B2022"
+                        />
+                        <circle
+                          cx="21.0908"
+                          cy="2.61816"
+                          r="2.61816"
+                          fill="#1B2022"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Panel content -->
+      <div id="Panel-content" class="hidden">
+         {% include "dashboards/admin/pages/regions/partials/create_region.html" %}
+      </div>
+    </div>
+  </div>
+</section>
+{%endblock%}
+{% block extra_js %}
+<script src="{% static '/js/admin/js/regions.js' %}"></script>
+{% endblock %}

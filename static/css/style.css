@@ -1,0 +1,48 @@
+.sidebar-scroll-hide {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sidebar-scroll-hide::-webkit-scrollbar {
+  display: none;
+}
+.is-collapsed .logout-btn {
+  padding: 30px 24px;
+  border-radius: 50%;
+  height: 30px;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+div#hamburger2 {
+  display: none;
+}
+.text-editor::placeholder {
+  color: #b7b9ba;
+}
+a,
+span {
+  display: inline-block;
+}
+.sidebar-active{
+  background: linear-gradient(180deg, #3E4547 0%, #2B3032 46.15%);
+
+}
+@media (max-width: 1024px) {
+  div#hamburger2 {
+    display: flex;
+    align-items: end;
+  }
+}
+@media (max-width: 575px) {
+}
+div#hamburger2 img {
+  width: 16px;
+}
