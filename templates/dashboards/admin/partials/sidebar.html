@@ -62,8 +62,7 @@
 
       <div class="group">
         <!-- TOGGLE -->
-        <a
-          href="#websitePageTab"
+        <a href="#"
           class="toggle w-full flex items-center justify-between gap-3 px-3 py-4 xl:px-6 md:px-4 xl:py-5 rounded-l-[55px] transition-all duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032]"
         >
           <!-- Left -->
@@ -87,26 +86,26 @@
           class="dropdown overflow-hidden pl-[48px] max-h-0 transition-[max-height] duration-300 ease-in-out group-[.open]:max-h-[200px]"
         >
           <div class="flex flex-col gap-3 py-3 text-[14px] text-[#C9CBCC]">
-            <span
+            <a href="{% url 'admin:page_customizer' %}"
               class="website-tab-link flex items-center gap-3 cursor-pointer hover:text-white"
               data-target="#websiteMainPage"
             >
               <span class="w-2 h-2 border border-[#6F7375] rounded-full"></span>
               <span class="sidebar-text">Páginas del sitio web</span>
-            </span>
+          </a>
 
-            <span
+            <a href="{% url 'admin:edit_page' %}"
               class="website-tab-link flex items-center gap-3 cursor-pointer hover:text-white"
               data-target="#websiteEditPage"
             >
               <span class="w-2 h-2 border border-[#6F7375] rounded-full"></span>
               <span class="sidebar-text">Páginas de personalización</span>
-            </span>
+          </a>
           </div>
         </div>
       </div>
       <a
-        href="#productosTab"
+        href="{% url 'admin:products' %}"
         class="flex items-center gap-3 transition-all duration-300 ease-in-out hover:bg-gradient-to-b hover:from-[#3E4547] hover:to-[#2B3032] px-3 py-4 xl:px-6 md:px-4 xl:py-5 rounded-l-[55px]"
       >
         <div>
